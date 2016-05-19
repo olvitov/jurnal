@@ -1,6 +1,6 @@
 <?php
 
- require_once __DIR__ .  '/../models/Articles.php';
+ // подключение автолоад require_once __DIR__ .  '/../models/Articles.php';
 
 class ArticlesController
 {
