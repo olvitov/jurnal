@@ -14,7 +14,13 @@ class Articles {
     public static function getAll() {
 
         $db = new DB;
-        return $db->query('SELECT * FROM articles', 'Articles');
+        return $db->queryAll('SELECT * FROM articles', 'articles');
 
+    }
+
+    public static function getOne($id) {
+
+        $db = new DB();
+        return $db->queryOne('SELECT * FROM articles WHERE id=' . $id, 'Articles');
     }
 }
