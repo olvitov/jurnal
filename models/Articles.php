@@ -1,8 +1,12 @@
 <?php
 
-require_once __DIR__ . '/../classes/DB.php';
+// подлючение автолоад require_once __DIR__ . '/../classes/DB.php';
 
-class Articles {
+class Articles
+    extends AbstractModel
+
+{
+
     
     public $id;
     public $title;
@@ -11,16 +15,10 @@ class Articles {
     public $text;
     public $author;
 
-    public static function getAll() {
+    protected static $table = 'Articles';
+    protected static $class = 'Articles';
 
-        $db = new DB;
-        return $db->queryAll('SELECT * FROM articles', 'articles');
+    
 
-    }
-
-    public static function getOne($id) {
-
-        $db = new DB();
-        return $db->queryOne('SELECT * FROM articles WHERE id=' . $id, 'Articles');
-    }
+   
 }
