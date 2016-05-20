@@ -2,7 +2,7 @@
 <html lang="">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Журнал АТС</title>
 </head>
 <body>
 <table border="1" width="800px">
@@ -12,10 +12,10 @@
         <th>Текст</th>
         <th>Автор</th>
 
-<?php foreach ($items as $item):?>
 
 
-        <tr>
+
+    <tr>
         <td><?php echo $item->title; ?></td>
         <td><?php echo $item->data; ?></td>
         <td><?php echo $item->description; ?></td>
@@ -23,13 +23,13 @@
         <td><?php echo $item->author; ?></td>
 
 
-        </tr>
+    </tr>
 
 
-    <?php endforeach; ?>
 
 
-    </table>
+
+</table>
 
 
 
