@@ -6,9 +6,11 @@ class ArticlesController
 {
     public function actionAll() {
 
-        $items = Articles::getAll();
 
-        include __DIR__ . '/../views/articles/all.php';
+        $articles = Articles::getAll();
+        $view = new View();
+        $view->items = $articles;
+     echo $view->display('articles/all.php');
 
     }
 
@@ -16,8 +18,12 @@ class ArticlesController
 
 
         $id = $_GET['id'];
-        $item = Articles::getOne($id);
-        include __DIR__ . '/../views/articles/one.php';
+        $articles = Articles::getOne($id);
+        $view = new View();
+        $view->item = $articles;
+        $view->display('articles/one.php');
+
+
     }
 
 }
