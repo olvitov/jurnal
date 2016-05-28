@@ -1,13 +1,31 @@
 <?php
 
 class DB {
+    private $dbh;
+
     public function __construct()
     {
-        mysql_connect('localhost', 'olvit', '34vit');
-        mysql_select_db('jurnal');
+
+
+        $this->dbh = new PDO('mysql:dbname=jurnal;host=localhost', 'olvit', '34vit');
     }
 
-    public function queryAll($sql, $class = 'stdClass') {
+     public function query($sql, $params=[])
+     {
+         $sth = $this->dbh->prepare($sql);
+         $res = $sth->execute($params);
+         return $sth->fetchAll(PDO::FETCH_OBJ);
+     }
+
+
+
+
+
+
+
+
+
+   /* public function queryAll($sql, $class = 'stdClass') {
 
         $res = mysql_query($sql);
         if (false === $res) {
@@ -26,4 +44,5 @@ class DB {
         return $this->queryAll($sql, $class)[0];
 
 }
+   */
 }
