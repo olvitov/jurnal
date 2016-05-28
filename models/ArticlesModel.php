@@ -10,6 +10,13 @@ class ArticlesModel
 extends AbstractModel
 {
     protected static $table = 'articles';
+
+    public $id;
+    public $title;
+    public $data;
+    public $description;
+    public $text;
+    public $author;
     
 
 }
