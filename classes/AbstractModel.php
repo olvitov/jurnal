@@ -6,6 +6,7 @@
 {
      protected static $table;
      protected static $class;
+     
      public static function getAll() {
 
          $db = new DB;
