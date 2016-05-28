@@ -6,12 +6,14 @@ class LessonsController
 {
     public function actionAll() {
 
-      //  $items = Lessons::getAll();
+        $db = new DB();
+        die;
+      /*
         $lessons = Lessons::getAll();
         $view = new View();
         $view->items = $lessons;
       echo  $view->display('lessons/all.php');
-
+*/
 
     }
 

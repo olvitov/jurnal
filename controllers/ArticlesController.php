@@ -4,14 +4,20 @@
 
 class ArticlesController
 {
-    public function actionAll() {
+    public function actionAll(){
 
+        $db = new DB();
+        $res = $db->query('SELECT * FROM articles WHERE id=:id',
+            [':id' => 10]
+            );
+        var_dump($res);
 
+/*
         $articles = Articles::getAll();
         $view = new View();
         $view->items = $articles;
      echo $view->display('articles/all.php');
-
+*/
     }
 
     public function actionOne() {
