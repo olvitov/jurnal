@@ -6,7 +6,9 @@ class LessonsController
 {
     public function actionAll() {
 
-        $db = new DB();
+        var_dump(
+            LessonsModel::findAll(30)
+        );
         die;
       /*
         $lessons = Lessons::getAll();

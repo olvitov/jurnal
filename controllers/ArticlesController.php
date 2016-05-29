@@ -4,32 +4,16 @@
 
 class ArticlesController
 {
-    public function actionAll(){
-
-        $db = new DB();
-        $res = $db->query('SELECT * FROM articles WHERE id=:id',
-            [':id' => 10]
-            );
-        var_dump($res);
-
-/*
-        $articles = Articles::getAll();
-        $view = new View();
-        $view->items = $articles;
-     echo $view->display('articles/all.php');
-*/
-    }
-
-    public function actionOne() {
-
-
-        $id = $_GET['id'];
-        $articles = Articles::getOne($id);
-        $view = new View();
-        $view->item = $articles;
-        $view->display('articles/one.php');
+    public function actionAll()
+    {
+        $article = new ArticlesModel();
+        $article->title = 'Тест2';
+        $article->date = '29-05-16';
+        $article->description = '5ESS';
+        $article->text =  'Авария2';
+        $article->author = 'Олвит';
+        $article->insert();
 
 
     }
-
 }
