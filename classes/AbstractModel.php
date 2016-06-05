@@ -16,6 +16,12 @@
          return $this->data[$k];
      }
 
+     public function __isset($k)
+     {
+
+         return isset($this->data[$k]);
+     }
+
 
      public static function findAll() {
 
@@ -35,7 +41,23 @@
          return $db->query($sql, [':id' => $id])[0];
      }
 
-     public function insert() {
+     public static function findOneByColumn($column, $value) {
+
+         $db = new DB();
+         $db->setClassName(get_called_class());
+         $sql = 'SELECT * FROM ' . static::$table . '
+          WHERE ' . $column . '=:value';
+         $res = $db->query($sql, [':value' => $value]);
+
+         if (!empty($res)) {
+             return $res[0];
+         }
+    return false;
+
+
+     }
+
+     protected function insert() {
          $cols = array_keys(($this->data));
 
          $ins = [];
@@ -47,8 +69,9 @@
          }
 
 
-         $cols = array_keys($this->data);
 
+         $cols = array_keys($this->data);
+        
         $sql = '
                 INSERT into ' . static::$table . '
                  (' . implode(', ', $cols). ')
@@ -58,10 +81,46 @@
 
 
 
+         $db = new DB();
+         $db->execute($sql, $data);
+        $this->id = $db->LastInsertId();
+
+     }
+
+
+     protected function update() {
+
+         $cols = [];
+         $data = [];
+
+         foreach ($this->data as $k => $v) {
+             $data[':' . $k] = $v;
+             if ('id' == $k) {
+                 continue;
+             }
+
+             $cols[] = $k . '=:' . $k;
+         }
+         var_dump($cols);
+          var_dump($data);
+
+       echo  $sql = '
+            UPDATE ' . static::$table . '
+            SET ' . implode(', ', $cols) . '
+            WHERE id=:id
+        ';
+
 
          $db = new DB();
          $db->execute($sql, $data);
-         
+     }
 
+     public function save() {
+
+         if (!isset($this->id)) {
+             $this->insert();
+         } else {
+             $this->update();
+         }
      }
 }

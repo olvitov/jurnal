@@ -9,20 +9,18 @@
  * @property  $text
  * @property $author
  */
-
-
 class ArticlesModel
 extends AbstractModel
 {
     protected static $table = 'articles';
 
-/*
 
+/*
     public $id;
     public $title;
     public $description;
     public $text;
     public $author;
-    
-*/
+  */
+
 }

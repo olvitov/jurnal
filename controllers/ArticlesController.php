@@ -6,13 +6,10 @@ class ArticlesController
 {
     public function actionAll()
     {
-        $article = new ArticlesModel();
-        $article->title = 'Тест2';
-        $article->date = '29-05-16';
-        $article->description = '5ESS';
-        $article->text =  'Авария2';
-        $article->author = 'Олвит';
-        $article->insert();
+        $art = ArticlesModel::findOneByColumn('title', 'Сигнализация');
+        $art->title = 'Подработка сигнализации 22222222';
+        $art->save();
+        var_dump($art->id);
 
 
     }
